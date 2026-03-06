@@ -1,6 +1,6 @@
 import PokemonCard from "@/components/PokemonCard";
 import { useEffect, useState } from "react";
-import { View } from "react-native";
+import { ScrollView } from "react-native";
 export default function Index() {
   const [results, setResults] = useState<any[]>([]);
 
@@ -10,7 +10,7 @@ export default function Index() {
   }, []);
 
   const getPokemons = async () => {
-    //parametro
+    //parametro api
     try {
       const URL = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
       const response = await fetch(URL, { method: "GET" });
@@ -29,7 +29,7 @@ export default function Index() {
   };
 
   return (
-    <View>
+    <ScrollView>
       {results.map((item) => {
         return (
           <PokemonCard
@@ -39,6 +39,6 @@ export default function Index() {
           ></PokemonCard>
         );
       })}
-    </View>
+    </ScrollView>
   );
 }
